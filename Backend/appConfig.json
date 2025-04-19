@@ -1,0 +1,4 @@
+{
+  "AZURE_SCOPES": ["https://graph.microsoft.com/.default"],
+  "GRAPH_API_ROOT_URL": "https://graph.microsoft.com/v1.0"
+}

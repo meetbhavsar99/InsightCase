@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// generator erd {
+//   provider = "prisma-erd-generator"
+// }
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  CASE_MANAGER
+}
+
+enum Access_level {
+  VIEW_ONLY
+  MANAGE
+}
+
+enum Region {
+  WINDSOR
+  LEAMINGTON
+  HARROW
+  AMHERSTBURG
+  TILBURY
+  CHATHAM
+}
+
+enum Status {
+  OPEN
+  ONGOING
+  CLOSED
+}
+
+model User {
+  id                  String        @id @default(uuid())
+  name                String
+  email               String        @unique
+  password            String
+  role                Role          @default(CASE_MANAGER)
+  created_cases       Case[]        @relation(name: "case_manager")
+  cases               Case[] @relation(name: "staff")
+  case_access         Case_access[]
+  tasks               Task[]
+  created_at          DateTime      @default(now())
+  updated_at          DateTime      @updatedAt
+}
+
+model Client {  
+  id                String        @id @default(uuid())
+  first_name        String
+  last_name         String
+  dob               DateTime
+  email             String        @unique
+  phone             String
+  address           String
+  region            Region    
+  reference_number  Int
+  referral_date     DateTime
+  cases             Case[]
+  created_at        DateTime      @default(now())
+  updated_at        DateTime      @updatedAt
+}
+
+model Service {
+  id                      String    @id @default(uuid())
+  name                    String    @unique
+  initial_contact_days    Int       // Number of days for the initial contact (e.g., 1 day for IES)
+  intake_interview_days   Int       // Number of days for the intake interview (e.g., 5 days for WSIB)
+  action_plan_weeks       Int       // Number of weeks for the Employment Action Plan (e.g., 2 weeks for IES)
+  monthly_contact         Boolean   // True if monthly contact is required (e.g., for IES)
+  monthly_reports         Boolean   // True if monthly reports are required (e.g., for WSIB)
+  cases                   Case[]
+  created_at              DateTime   @default(now())
+  updated_at              DateTime   @updatedAt
+}
+
+model Case {
+  id                String       @id @default(uuid())
+  client            Client       @relation(fields: [client_id], references: [id])
+  client_id         String          
+  case_manager      User         @relation(name: "case_manager", fields: [case_manager_id], references: [id])
+  case_manager_id   String
+  staff             User         @relation(name: "staff", fields: [staff_id], references: [id])
+  staff_id          String
+  service           Service      @relation(fields: [service_id], references: [id])
+  service_id        String
+  region            Region
+  status            Status
+  opened_at         DateTime     @default(now())
+  start_at          DateTime? 
+  closed_at         DateTime?
+  tasks             Task[]
+  case_access       Case_access[]
+  created_at        DateTime     @default(now())
+  updated_at        DateTime     @updatedAt
+}
+
+model Case_access {
+  id              String       @id @default(uuid())
+  user            User         @relation(fields: [user_id], references: [id])
+  user_id         String
+  case            Case         @relation(fields: [case_id], references: [id])
+  case_id         String      
+  access_level    Access_level
+  created_at      DateTime   @default(now())
+  updated_at      DateTime   @updatedAt
+}
+
+model Task {
+  id              String       @id @default(uuid())
+  case            Case         @relation(fields: [case_id], references: [id])
+  case_id         String
+  staff           User         @relation(fields: [staff_id], references: [id])
+  staff_id        String
+  description     String
+  due_date        DateTime
+  microsoft_list_id           String?
+  microsoft_todo_id           String?
+  microsoft_calendar_event_id String?
+  is_complete     Boolean      @default(false)
+  completed_at    DateTime?
+  created_at      DateTime     @default(now())
+  updated_at      DateTime     @updatedAt
+}
