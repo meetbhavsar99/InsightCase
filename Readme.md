@@ -1,17 +1,42 @@
-# InsightCase
+# InsightCase 🔍
 
-InsightCase is a comprehensive **Case Management Tool** designed to streamline employment services for individuals with disabilities. This tool was developed for a business to optimize their workflow and service delivery. The project was selected at the **11th CS Demo Day** at the University of Windsor among the top teams and won the project pitch competition among two other teams during the **Internship Project - I** course at the University of Windsor.
+InsightCase is a full-stack **Case Management Web Application** developed for a local business to streamline service delivery and client engagement for individuals with disabilities.  
+It integrates Microsoft 365 services to automate workflows, simplify case handling, and boost operational efficiency.
 
-## Features
+> 🚀 This is a forked version of a collaborative project. I contributed to backend logic enhancements, secure authentication with Microsoft OAuth, UI improvements, and Microsoft Graph API integrations.
 
-- **User Authentication:** Microsoft login feature with JWT-based authentication and role-based access control.
-- **Task Management:** Integration with Microsoft To-Do for task assignment and tracking.
-- **Event Scheduling:** Calendar event management via Microsoft Calendar.
-- **Email Integration:** Communication support through Outlook integration.
-- **Workflow Automation:** Simplified and efficient workflows for case management.
-- **Database Management:** Centralized data storage with PostgreSQL.
+---
 
-## Technologies Used
+## 🏆 Recognition
+
+- ✅ **Selected at the 11th CS Demo Day**, University of Windsor
+- 🥇 **Won project pitch competition** during _Internship Project – I_ among 30+ teams
+
+---
+
+## 🔑 Key Features
+
+- 🔐 **Authentication & Access Control**  
+  Microsoft login with JWT-based role access for Admins, Staff, and Clients.
+
+- ✅ **Task Management**  
+  Integrates with Microsoft To-Do for seamless task tracking.
+
+- 📅 **Event Scheduling**  
+  Real-time calendar syncing using Microsoft Calendar.
+
+- 📬 **Email Integration**  
+  Communication via Microsoft Outlook APIs.
+
+- ⚙️ **Workflow Automation**  
+  Efficient role-based workflows to handle multi-step case resolution.
+
+- 🗄️ **Data Centralization**  
+  PostgreSQL backend with structured relational models.
+
+---
+
+## 🛠️ Tech Stack
 
 ### Frontend
 
@@ -21,72 +46,104 @@ InsightCase is a comprehensive **Case Management Tool** designed to streamline e
 
 ### Backend
 
-- **NestJS** (Node.js Framework)
-- **PostgreSQL** (Database)
-- **Microsoft Graph API** (Integration with Microsoft 365 apps)
+- **NestJS**
+- **PostgreSQL**
+- **Microsoft Graph API**
 
-## Folder Structure
+---
+
+## 📁 Folder Structure
 
 ```
 InsightCase/
-├── Frontend   # Contains the Next.js frontend app
-└── Backend    # Contains the Nest.js backend app
+├── Frontend   # Next.js client app
+└── Backend    # NestJS server-side API
 ```
 
-## Setup Instructions
+---
 
-### Prerequisites
+## ⚙️ Setup Instructions
 
-- Node.js (v16 or higher)
-- PostgreSQL (v14 or higher)
-- Microsoft Developer Account for API keys
+### 🔧 Prerequisites
 
-### Steps to Run Locally
+- Node.js (v16+)
+- PostgreSQL (v14+)
+- Microsoft Developer Account (for Microsoft Graph API keys)
 
-1. Clone the repository:
+---
 
-   ```bash
-   git clone https://github.com/Vrutik21/InsightCase.git
-   cd InsightCase
-   ```
+### 🧩 Installation Steps
 
-2. Install dependencies for both frontend and backend:
+```bash
+# Clone the repository
+git clone https://github.com/meetbhavsar99/InsightCase.git
+cd InsightCase
+```
 
-   ```bash
-   cd Frontend
-   npm install
-   cd ../Backend
-   npm install
-   ```
+```bash
+# Install frontend dependencies
+cd Frontend
+npm install
 
-3. Set up environment variables:
+# Install backend dependencies
+cd ../Backend
+npm install
+```
 
-   - For **Frontend**, create a `.env` file in the `Frontend` folder.
-   - For **Backend**, create a `.env` file in the `Backend` folder.
+---
 
-4. Start the development servers:
+### 🔐 Set up environment variables
 
-   ```bash
-   # Start frontend
-   cd Frontend
-   npm run dev
+- Create a `.env` file in **/Frontend** with frontend config (e.g., Graph API client ID)
+- Create a `.env` file in **/Backend** with backend config (e.g., DB credentials, MS secrets)
 
-   # Start backend
-   cd ../Backend
-   npm run start:dev
-   ```
+---
 
-5. Access the application:
-   - Frontend: `http://localhost:3000`
-   - Backend: `http://localhost:3001`
+### 🚀 Run the Application
 
-## License
+```bash
+# Start the frontend
+cd Frontend
+npm run dev
+```
+
+```bash
+# Start the backend
+cd ../Backend
+npm run start:dev
+```
+
+---
+
+### 🌐 Access Locally
+
+- Frontend → [http://localhost:3000](http://localhost:3000)
+- Backend → [http://localhost:3001](http://localhost:3001)
+
+---
+
+## 🙌 Acknowledgment
+
+This project originated as a team collaboration.
+
+I contributed to:
+
+- Microsoft Graph API integration (Calendar, Outlook, To-Do)
+- Secure authentication with Microsoft OAuth and JWT
+- Backend module and controller improvements in NestJS
+- Dashboard layout and responsive UI enhancements
+- Code cleanup, refactoring, and folder restructuring
+
+---
+
+## 📜 License
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Contact
+---
 
-For any inquiries, feel free to reach out:
+## 📫 Contact
 
-- **Email:** parmar8a@uwindsor.ca
-- **LinkedIn:** [Vrutik Parmar](https://www.linkedin.com/in/vrutik-parmar-9261821b8/)
+**Meet Bhavsar**  
+📧 [meetbhavsar99@gmail.com](mailto:meetbhavsar99@gmail.com)  
+💼 [LinkedIn](https://www.linkedin.com/in/meet-bhavsar-0059ba1b5/)
